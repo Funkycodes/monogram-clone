@@ -1,0 +1,145 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: fixed;
+  z-index: 999;
+  inset-inline: 16px;
+  inset-block-start: 16px;
+
+  padding: 8px;
+  background: var(--blue);
+  color: var(--pink);
+
+  @media (max-width: $breakpoint-sm) {
+    inset-block-start: 8px;
+    inset-inline: 8px;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}
+[class^="nav"] {
+  a {
+    &:hover {
+      color: var(--peach);
+    }
+    &.dropdown-toggle:hover {
+      color: var(--off-white);
+    }
+  }
+  .logo {
+    display: inline-flex;
+    a {
+      display: inherit;
+      svg {
+        fill: currentColor;
+      }
+    }
+  }
+}
+.nav__bar {
+  font-size: calc(12 / 16 * 1rem);
+  display: flex;
+  align-items: center;
+
+  &--desktop {
+    @media (max-width: $breakpoint-md) {
+    }
+  }
+  &--tablet {
+    @media (max-width: $breakpoint-md) {
+      display: flex;
+    }
+    @media (max-width: $breakpoint-sm) {
+      display: none;
+    }
+    display: none;
+  }
+  &--mobile {
+    @media (max-width: $breakpoint-sm) {
+      display: flex;
+    }
+    display: none;
+  }
+}
+.nav__links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  & > li {
+    padding: 8px;
+    letter-spacing: 1.6px;
+    position: relative;
+    text-transform: uppercase;
+
+    &.cart {
+      margin-right: -1rem;
+    }
+
+    .dropdown-toggle {
+      display: flex;
+      align-items: center;
+      gap: 0.1em;
+
+      &__icon {
+        font-size: 1.4em;
+      }
+    }
+
+    & .dropdown {
+      position: absolute;
+      top: 100%;
+      width: max-content;
+
+      background-color: #fff;
+      color: var(--black);
+
+      font-size: 1rem;
+      letter-spacing: 2px;
+      display: none;
+
+      & > li {
+        padding: 10px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+
+        &:hover {
+          background: var(--off-white);
+        }
+      }
+
+      &--left {
+        left: 0;
+      }
+      &--right {
+        right: 0;
+        font-size: calc(14 / 16 * 1rem);
+
+        & > li {
+          padding: 8px 16px;
+        }
+      }
+
+      &[data-state="open"] {
+        display: initial;
+      }
+    }
+  }
+}
+.nav__off-canvas {
+  background: var(--blue);
+  padding: 24px;
+  color: var(--pink);
+  display: none;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 16px;
+  }
+}

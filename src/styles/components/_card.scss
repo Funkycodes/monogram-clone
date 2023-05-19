@@ -1,0 +1,86 @@
+// stylistic
+.card {
+  position: relative;
+  cursor: pointer;
+
+  // preorder badge
+  &[data-preorder="true"]::after {
+    position: absolute;
+    content: "PRE-ORDER";
+    top: 1rem;
+    right: 0;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+
+    background: var(--peach);
+    padding: 6px 12px;
+    padding-right: 16px;
+  }
+  &__image-wrapper {
+    .card__image {
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  &__price {
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+}
+.card__info {
+  &__wrapper {
+    display: flex;
+    gap: 0.75rem;
+    flex-flow: column nowrap;
+    margin-top: 0.75rem;
+  }
+  &--main {
+    display: flex;
+    justify-content: space-between;
+
+    & > * {
+      flex: 1;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+  &:hover &--alt {
+    font-size: calc(0.875rem);
+  }
+}
+.card:hover .card__info--main {
+  position: relative;
+  // shop now button
+  &::before {
+    position: absolute;
+    content: "SHOP NOW";
+    right: 0;
+    top: -0.2em;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    padding: 8px 12px;
+    border-radius: 16px;
+    background-color: var(--blue);
+    color: var(--off-white);
+  }
+}
+// Animations
+.card {
+  transform: translateY(15%);
+  opacity: 0;
+  &.visible {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: all 0.7s ease-out;
+  }
+}
